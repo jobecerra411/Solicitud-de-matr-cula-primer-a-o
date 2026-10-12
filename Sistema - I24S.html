@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción 1º Año - Instituto 24 de Setiembre</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f4f7f6;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 2px solid var(--primary-color);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 100px;
+            height: auto;
+        }
+        h1 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .school-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input[type="text"], input[type="number"], input[type="date"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .checkbox-item {
+            flex: 1 1 45%;
+            font-size: 13px;
+        }
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .btn-submit {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+        .btn-submit:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        .print-signatures {
+            display: none;
+        }
+
+        /* --- ESTILOS EXCLUSIVOS PARA IMPRESIÓN A4 --- */
+        @media print {
+            @page {
+                size: A4;
+                margin: 10mm 15mm;
+            }
+            body {
+                background-color: #fff;
+                padding: 0;
+                font-size: 11px; 
+            }
+            .container {
+                box-shadow: none;
+                border: 2px solid #000; 
+                padding: 10px; 
+                margin: 0;
+            }
+            .header {
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+            }
+            .header img {
+                max-width: 60px; 
+            }
+            h1 {
+                font-size: 16px;
+                margin: 5px 0;
+            }
+            .school-name {
+                font-size: 18px !important;
+                margin: 0;
+            }
+            .btn-submit {
+                display: none; 
+            }
+            .form-group {
+                margin-bottom: 5px;
+            }
+            label {
+                font-size: 11px;
+                margin-bottom: 2px;
+            }
+            input, select {
+                border: none;
+                border-bottom: 1px solid #000;
+                border-radius: 0;
+                padding: 2px 0;
+                font-size: 11px;
+                background: transparent !important;
+                height: 18px; 
+            }
+            .section-title {
+                background-color: transparent;
+                color: #000;
+                border-bottom: 2px solid #000;
+                padding: 2px 0;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                font-size: 13px;
+            }
+            .checkbox-group {
+                border: none;
+                background: transparent;
+                padding: 0;
+                margin-bottom: 5px;
+            }
+            .checkbox-item {
+                font-size: 11px;
+            }
+            .form-row[style*="background-color: #e9ecef"] {
+                padding: 5px !important;
+                margin-bottom: 10px !important;
+                border: 1px solid #000 !important;
+            }
+            .print-signatures {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 40px; 
+            }
+            .signature-line {
+                width: 40%;
+                text-align: center;
+                border-top: 1px solid #000;
+                padding-top: 5px;
+                font-weight: bold;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="Escudo I24S.png" alt="Escudo Instituto 24 de Setiembre">
+        <h1>SOLICITUD DE INGRESO - 1º AÑO</h1>
+        <h2 class="school-name">Instituto 24 de Setiembre</h2>
+    </div>
+
+    <form id="inscripcionForm">
+        
+        <div class="form-row" style="background-color: #e9ecef; padding: 15px; border-radius: 4px; border: 1px solid #ced4da; margin-bottom: 20px;">
+            <div class="form-group" style="margin-bottom: 0;">
+                <label>Nº de Solicitud</label>
+                <input type="text" id="nroSolicitud" style="font-weight: bold; font-size: 16px; background-color: #fff; text-align: center;">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <label>Fecha de Inscripción</label>
+                <!-- Quitamos el readonly para que se pueda modificar manualmente -->
+                <input type="date" id="fechaActual" style="background-color: #fff;">
+            </div>
+        </div>
+
+        <div class="section-title">DATOS DEL SOLICITANTE</div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label>Apellido y Nombre Completo</label>
+                <input type="text" id="nombreAlumno" required placeholder="Ej. Pérez, Juan Ignacio">
+            </div>
+            <div class="form-group">
+                <label>D.N.I. Nº</label>
+                <input type="number" id="dniAlumno" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Fecha de Nacimiento</label>
+                <input type="date" id="nacimientoAlumno" required>
+            </div>
+            <div class="form-group">
+                <label>Nacionalidad</label>
+                <input type="text" id="nacionalidadAlumno" value="Argentina">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Domicilio (Calle, Número, Localidad)</label>
+            <input type="text" id="domicilioAlumno" required>
+        </div>
+
+        <div class="section-title">DATOS DEL PADRE, MADRE, TUTOR O ENCARGADO</div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label>Apellido y Nombre</label>
+                <input type="text" id="nombreTutor" required>
+            </div>
+            <div class="form-group">
+                <label>D.N.I. Nº</label>
+                <input type="number" id="dniTutor" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Nacionalidad</label>
+                <input type="text" id="nacionalidadTutor" value="Argentina" required>
+            </div>
+            <div class="form-group">
+                <label>Teléfono de Contacto</label>
+                <input type="text" id="telefonoTutor" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Correo Electrónico</label>
+            <input type="text" id="emailTutor">
+        </div>
+
+        <div class="form-group">
+            <label>Domicilio del Tutor (Calle, Número, Localidad)</label>
+            <input type="text" id="domicilioTutor" required>
+        </div>
+
+        <div class="section-title">DOCUMENTACIÓN PRESENTADA</div>
+        <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" id="chkDni"> Fotocopia de D.N.I. actualizado</label>
+            <label class="checkbox-item"><input type="checkbox" id="chkPartida"> Partida de Nacimiento</label>
+            <label class="checkbox-item"><input type="checkbox" id="chkEstudios"> Constancia de 6to Grado / Certificado de Estudios</label>
+            <label class="checkbox-item"><input type="checkbox" id="chkMedica"> Ficha Médica (Vacunas, Salud, Odontológico)</label>
+        </div>
+
+        <div class="section-title">PREFERENCIAS DE MATRICULACIÓN</div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>División</label>
+                <select id="division">
+                    <option value="A">División A</option>
+                    <option value="B">División B</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Observaciones (Médicas o Generales)</label>
+            <input type="text" id="observaciones" placeholder="Alergias, necesidades específicas, etc.">
+        </div>
+
+        <div class="print-signatures">
+            <div class="signature-line">
+                Firma del Padre, Madre, Tutor o Encargado<br>
+                Aclaración:
+            </div>
+            <div class="signature-line">
+                Firma del Administrativo<br>
+                Instituto 24 de Setiembre
+            </div>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="guardarEImprimir()">Guardar Datos e Imprimir Ficha</button>
+    </form>
+</div>
+
+<script>
+    // Inicialización al cargar la página
+    window.onload = function() {
+        const hoy = new Date();
+        const año = hoy.getFullYear();
+        const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+        const dia = String(hoy.getDate()).padStart(2, '0');
+        document.getElementById('fechaActual').value = `${año}-${mes}-${dia}`;
+
+        let numero = localStorage.getItem('numeroInscripcionI24S');
+        if (!numero) {
+            numero = 1; 
+        }
+        document.getElementById('nroSolicitud').value = String(numero).padStart(4, '0');
+    };
+
+    function guardarEImprimir() {
+        // Validación básica
+        if(!document.getElementById('nombreAlumno').value || !document.getElementById('dniAlumno').value) {
+            alert("Por favor, complete al menos el Nombre y DNI del alumno.");
+            return;
+        }
+
+        // 1. Preparar los datos
+        const data = new URLSearchParams();
+        data.append('fecha', document.getElementById('fechaActual').value);
+        data.append('numero', document.getElementById('nroSolicitud').value);
+        data.append('nombre_alumno', document.getElementById('nombreAlumno').value);
+        data.append('dni_alumno', document.getElementById('dniAlumno').value);
+        data.append('nacimiento', document.getElementById('nacimientoAlumno').value);
+        data.append('nacionalidad_alumno', document.getElementById('nacionalidadAlumno').value);
+        data.append('domicilio_alumno', document.getElementById('domicilioAlumno').value);
+        data.append('nombre_tutor', document.getElementById('nombreTutor').value);
+        data.append('dni_tutor', document.getElementById('dniTutor').value);
+        data.append('nacionalidad_tutor', document.getElementById('nacionalidadTutor').value);
+        data.append('telefono_tutor', document.getElementById('telefonoTutor').value);
+        data.append('email_tutor', document.getElementById('emailTutor').value);
+        data.append('domicilio_tutor', document.getElementById('domicilioTutor').value);
+        data.append('division', document.getElementById('division').value);
+        data.append('observaciones', document.getElementById('observaciones').value);
+        
+        // Adjuntamos también los tildes de la documentación
+        data.append('doc_dni', document.getElementById('chkDni').checked ? 'Sí' : 'No');
+        data.append('doc_partida', document.getElementById('chkPartida').checked ? 'Sí' : 'No');
+        data.append('doc_estudios', document.getElementById('chkEstudios').checked ? 'Sí' : 'No');
+        data.append('doc_medica', document.getElementById('chkMedica').checked ? 'Sí' : 'No');
+
+        // AQUÍ PEGÁS TU LINK DE APPS SCRIPT ENTRE LAS COMILLAS
+        const url = "https://script.google.com/macros/s/AKfycbzHdBShJ28qIutiRP2dVpDUUssG91Ks59HMocabw3af7c7TiXw3QOxmVKm3CWIBTci_4g/exec";
+
+        // Cambiar botón a estado "Guardando..."
+        const btn = document.querySelector('.btn-submit');
+        btn.innerText = "Guardando...";
+        btn.disabled = true;
+
+        // 2. Enviar datos a Google Sheets sin que el navegador bloquee la respuesta
+        fetch(url, {
+            method: 'POST',
+            body: data,
+            mode: 'no-cors'
+        })
+        .then(() => {
+            // 3. Imprimir y recargar si salió todo bien
+            alert("Los datos se guardaron con éxito. El comprobante PDF será enviado (si ingresó un mail) y se procederá a imprimir.");
+            window.print();
+            
+            let nroInput = document.getElementById('nroSolicitud').value;
+            let numeroActual = parseInt(nroInput, 10) || parseInt(localStorage.getItem('numeroInscripcionI24S')) || 1;
+            localStorage.setItem('numeroInscripcionI24S', numeroActual + 1);
+            
+            setTimeout(function() {
+                window.location.reload();
+            }, 2000);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Hubo un error al guardar los datos en la base. Verifique su conexión a internet e inténtelo de nuevo.");
+            btn.innerText = "Guardar Datos e Imprimir Ficha";
+            btn.disabled = false;
+        });
+    }
+</script>
+
+</body>
+</html>
