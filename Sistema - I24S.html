@@ -147,8 +147,8 @@
                 font-size: 18px !important;
                 margin: 0;
             }
-            .btn-submit {
-                display: none; 
+            .btn-submit, #buscadorSeccion, hr {
+                display: none !important; 
             }
             .form-group {
                 margin-bottom: 5px;
@@ -214,12 +214,11 @@
         <h2 class="school-name">Instituto 24 de Setiembre</h2>
     </div>
 
-	<form id="inscripcionForm" onsubmit="event.preventDefault(); guardarEImprimir();">
+    <form id="inscripcionForm" onsubmit="event.preventDefault(); guardarEImprimir();">
         
         <div class="form-row" style="background-color: #e9ecef; padding: 15px; border-radius: 4px; border: 1px solid #ced4da; margin-bottom: 20px;">
             <div class="form-group" style="margin-bottom: 0;">
                 <label>Nº de Solicitud</label>
-                <!-- Solo números y bloqueo físico -->
                 <input type="number" id="nroSolicitud" min="1" step="1" required style="font-weight: bold; font-size: 16px; background-color: #fff; text-align: center;" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
             </div>
             <div class="form-group" style="margin-bottom: 0;">
@@ -233,12 +232,10 @@
         <div class="form-row">
             <div class="form-group">
                 <label>Apellido y Nombre Completo</label>
-                <!-- Solo letras, espacios y comas -->
                 <input type="text" id="nombreAlumno" required placeholder="Ej. Pérez, Juan Ignacio" oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s,]/g, '');">
             </div>
             <div class="form-group">
                 <label>D.N.I. Nº</label>
-                <!-- Bloquea cualquier cosa que no sea número -->
                 <input type="text" id="dniAlumno" required pattern="\d+" title="Ingrese solo números" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
             </div>
         </div>
@@ -250,7 +247,6 @@
             </div>
             <div class="form-group">
                 <label>Nacionalidad</label>
-                <!-- Solo letras -->
                 <input type="text" id="nacionalidadAlumno" value="Argentina" required oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');">
             </div>
         </div>
@@ -265,12 +261,10 @@
         <div class="form-row">
             <div class="form-group">
                 <label>Apellido y Nombre</label>
-                <!-- Solo letras, espacios y comas -->
                 <input type="text" id="nombreTutor" required oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s,]/g, '');">
             </div>
             <div class="form-group">
                 <label>D.N.I. Nº</label>
-                <!-- Bloquea cualquier cosa que no sea número -->
                 <input type="text" id="dniTutor" required pattern="\d+" title="Ingrese solo números" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
             </div>
         </div>
@@ -278,23 +272,20 @@
         <div class="form-row">
             <div class="form-group">
                 <label>Nacionalidad</label>
-                <!-- Solo letras -->
                 <input type="text" id="nacionalidadTutor" value="Argentina" required oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');">
             </div>
             <div class="form-group">
                 <label>Teléfono de Contacto</label>
-                <!-- Solo acepta números, espacios, guiones y el + -->
                 <input type="text" id="telefonoTutor" required oninput="this.value = this.value.replace(/[^0-9+\-\s]/g, '');">
             </div>
         </div>
 
-        <!-- NUEVA FILA: Agrupa Email y Domicilio para que tengan el mismo ancho -->
         <div class="form-row">
-            <div class="form-group" style="flex: 1;">
+            <div class="form-group">
                 <label>Correo Electrónico</label>
                 <input type="email" id="emailTutor" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" title="Ingrese un correo válido con @ y terminación (ej. .com)" onblur="this.reportValidity()">
             </div>
-            <div class="form-group" style="flex: 1;">
+            <div class="form-group">
                 <label>Domicilio del Tutor (Calle, Nro, Localidad)</label>
                 <input type="text" id="domicilioTutor" required>
             </div>
@@ -305,22 +296,15 @@
             <label class="checkbox-item"><input type="checkbox" id="chkDni"> Fotocopia de D.N.I. actualizado</label>
             <label class="checkbox-item"><input type="checkbox" id="chkPartida"> Partida de Nacimiento</label>
             <label class="checkbox-item"><input type="checkbox" id="chkEstudios"> Constancia de 6to Grado / Certificado de Estudios</label>
-            <label class="checkbox-item"><input type="checkbox" id="chkMedica"> Ficha Médica (Vacunas, Salud, Odontológico)</label>
+            <label class="checkbox-item"><input type="checkbox" id="chkCus"> Certificado Único de Salud (CUS)</label>
+            <label class="checkbox-item"><input type="checkbox" id="chkIsa"> Informe de Salud Anual (ISA)</label>
+            <label class="checkbox-item"><input type="checkbox" id="chkImagen"> Autorización de Imagen y Voz</label>
+            <label class="checkbox-item"><input type="checkbox" id="chkVacunas"> Fotocopia de Cartilla de Vacunación</label>
         </div>
 
-        <div class="section-title">PREFERENCIAS DE MATRICULACIÓN</div>
-        <div class="form-row">
-            <div class="form-group">
-                <label>División</label>
-                <select id="division">
-                    <option value="A">División A</option>
-                    <option value="B">División B</option>
-                </select>
-            </div>
-        </div>
+        <div class="section-title">OBSERVACIONES</div>
         <div class="form-group">
             <label>Observaciones (Médicas o Generales)</label>
-            <!-- Obligatorio. Si no hay, deben escribir "Ninguna" -->
             <input type="text" id="observaciones" placeholder="Alergias, necesidades específicas, o colocar 'Ninguna'" required>
         </div>
 
@@ -335,13 +319,29 @@
             </div>
         </div>
 
-        <!-- Cambiamos a type="submit" para que primero valide todo antes de ejecutar el envío -->
-        <button type="submit" class="btn-submit">Guardar Datos e Imprimir Ficha</button>
+        <button type="submit" id="btnGuardarPrincipal" class="btn-submit">Guardar Datos e Imprimir Ficha</button>
     </form>
+
+    <hr style="margin-top: 40px; margin-bottom: 20px; border: 0; border-top: 1px solid #ccc;">
+
+    <!-- BUSCADOR DE EDICIÓN Y REIMPRESIÓN -->
+    <div id="buscadorSeccion" style="background-color: #d1ecf1; padding: 15px; border-radius: 4px; border: 1px solid #bee5eb;">
+        <label style="color: #0c5460;">¿Desea editar o reimprimir una ficha anterior? Ingrese DNI:</label>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px;">
+            <input type="text" id="dniBusqueda" placeholder="Ej. 45123456" style="flex: 1; min-width: 200px;" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+            <button type="button" class="btn-submit" style="margin-top: 0; width: auto; background-color: #17a2b8;" onclick="buscarFichaPorDNI()">Buscar Alumno</button>
+            <button type="button" id="btnImprimirSolo" class="btn-submit" style="margin-top: 0; width: auto; background-color: #6c757d; display: none;" onclick="window.print()">Solo Imprimir</button>
+            <button type="button" id="btnCancelarEdicion" class="btn-submit" style="margin-top: 0; width: auto; background-color: #dc3545; display: none;" onclick="window.location.reload()">Cancelar / Nueva Inscripción</button>
+        </div>
+        <div id="mensajeBusqueda" style="margin-top: 5px; font-weight: bold; font-size: 13px; color: #dc3545;"></div>
+    </div>
+
 </div>
 
 <script>
-    // Inicialización al cargar la página
+    // Memoria para saber si estamos editando una fila vieja (mayor a 0) o creando una nueva (0)
+    let filaEdicionActual = 0;
+
     window.onload = function() {
         const hoy = new Date();
         const año = hoy.getFullYear();
@@ -357,13 +357,11 @@
     };
 
     function guardarEImprimir() {
-        // Validación básica
         if(!document.getElementById('nombreAlumno').value || !document.getElementById('dniAlumno').value) {
             alert("Por favor, complete al menos el Nombre y DNI del alumno.");
             return;
         }
 
-        // 1. Preparar los datos
         const data = new URLSearchParams();
         data.append('fecha', document.getElementById('fechaActual').value);
         data.append('numero', document.getElementById('nroSolicitud').value);
@@ -378,37 +376,46 @@
         data.append('telefono_tutor', document.getElementById('telefonoTutor').value);
         data.append('email_tutor', document.getElementById('emailTutor').value);
         data.append('domicilio_tutor', document.getElementById('domicilioTutor').value);
-        data.append('division', document.getElementById('division').value);
         data.append('observaciones', document.getElementById('observaciones').value);
         
-        // Adjuntamos también los tildes de la documentación
         data.append('doc_dni', document.getElementById('chkDni').checked ? 'Sí' : 'No');
         data.append('doc_partida', document.getElementById('chkPartida').checked ? 'Sí' : 'No');
         data.append('doc_estudios', document.getElementById('chkEstudios').checked ? 'Sí' : 'No');
-        data.append('doc_medica', document.getElementById('chkMedica').checked ? 'Sí' : 'No');
+        data.append('doc_cus', document.getElementById('chkCus').checked ? 'Sí' : 'No');
+        data.append('doc_isa', document.getElementById('chkIsa').checked ? 'Sí' : 'No');
+        data.append('doc_imagen', document.getElementById('chkImagen').checked ? 'Sí' : 'No');
+        data.append('doc_vacunas', document.getElementById('chkVacunas').checked ? 'Sí' : 'No');
 
-        // AQUÍ PEGÁS TU LINK DE APPS SCRIPT ENTRE LAS COMILLAS
+        // Le avisamos a Google si tiene que crear uno nuevo o sobreescribir
+        if (filaEdicionActual > 0) {
+            data.append('accion', 'editar');
+            data.append('fila', filaEdicionActual);
+        } else {
+            data.append('accion', 'nuevo');
+            data.append('fila', 0);
+        }
+
         const url = "https://script.google.com/macros/s/AKfycbzHdBShJ28qIutiRP2dVpDUUssG91Ks59HMocabw3af7c7TiXw3QOxmVKm3CWIBTci_4g/exec";
 
-        // Cambiar botón a estado "Guardando..."
-        const btn = document.querySelector('.btn-submit');
+        const btn = document.getElementById('btnGuardarPrincipal');
         btn.innerText = "Guardando...";
         btn.disabled = true;
 
-        // 2. Enviar datos a Google Sheets sin que el navegador bloquee la respuesta
         fetch(url, {
             method: 'POST',
             body: data,
             mode: 'no-cors'
         })
         .then(() => {
-            // 3. Imprimir y recargar si salió todo bien
-            alert("Los datos se guardaron con éxito. El comprobante PDF será enviado (si ingresó un mail) y se procederá a imprimir.");
+            alert("Los datos se guardaron con éxito. Se procederá a imprimir la ficha.");
             window.print();
             
-            let nroInput = document.getElementById('nroSolicitud').value;
-            let numeroActual = parseInt(nroInput, 10) || parseInt(localStorage.getItem('numeroInscripcionI24S')) || 1;
-            localStorage.setItem('numeroInscripcionI24S', numeroActual + 1);
+            // Solo aumentamos el número de solicitud local si era un alumno NUEVO
+            if (filaEdicionActual === 0) {
+                let nroInput = document.getElementById('nroSolicitud').value;
+                let numeroActual = parseInt(nroInput, 10) || parseInt(localStorage.getItem('numeroInscripcionI24S')) || 1;
+                localStorage.setItem('numeroInscripcionI24S', numeroActual + 1);
+            }
             
             setTimeout(function() {
                 window.location.reload();
@@ -417,8 +424,81 @@
         .catch(error => {
             console.error('Error:', error);
             alert("Hubo un error al guardar los datos en la base. Verifique su conexión a internet e inténtelo de nuevo.");
-            btn.innerText = "Guardar Datos e Imprimir Ficha";
+            btn.innerText = (filaEdicionActual > 0) ? "Actualizar Datos e Imprimir Ficha" : "Guardar Datos e Imprimir Ficha";
             btn.disabled = false;
+        });
+    }
+
+    function buscarFichaPorDNI() {
+        const dniBuscado = document.getElementById('dniBusqueda').value;
+        const mensaje = document.getElementById('mensajeBusqueda');
+        const btnImprimirSolo = document.getElementById('btnImprimirSolo');
+        const btnCancelarEdicion = document.getElementById('btnCancelarEdicion');
+        const btnGuardarPrincipal = document.getElementById('btnGuardarPrincipal');
+        
+        if (!dniBuscado) {
+            mensaje.innerText = "Por favor, ingrese un DNI para buscar.";
+            mensaje.style.color = "#dc3545";
+            return;
+        }
+
+        mensaje.innerText = "Buscando en la base de datos de Google...";
+        mensaje.style.color = "#17a2b8";
+        btnImprimirSolo.style.display = "none";
+        btnCancelarEdicion.style.display = "none";
+
+        const urlBusqueda = "https://script.google.com/macros/s/AKfycbzHdBShJ28qIutiRP2dVpDUUssG91Ks59HMocabw3af7c7TiXw3QOxmVKm3CWIBTci_4g/exec?dni=" + dniBuscado;
+
+        fetch(urlBusqueda)
+        .then(response => response.json())
+        .then(datos => {
+            if (datos.encontrado) {
+                // Guardamos la memoria de qué fila estamos editando
+                filaEdicionActual = datos.numeroFila;
+                
+                mensaje.innerText = "¡Ficha encontrada! Edite lo necesario y actualice, o presione 'Solo Imprimir'.";
+                mensaje.style.color = "#28a745";
+                
+                btnImprimirSolo.style.display = "block";
+                btnCancelarEdicion.style.display = "block";
+                
+                // Cambiamos el texto del botón principal para que sea evidente que va a actualizar
+                btnGuardarPrincipal.innerText = "Actualizar Datos e Imprimir Ficha";
+                btnGuardarPrincipal.style.backgroundColor = "#ffc107"; // Lo ponemos amarillo para llamar la atención
+                btnGuardarPrincipal.style.color = "#000";
+                
+                document.getElementById('fechaActual').value = datos.fila[0];
+                document.getElementById('nroSolicitud').value = datos.fila[1];
+                document.getElementById('nombreAlumno').value = datos.fila[2];
+                document.getElementById('dniAlumno').value = datos.fila[3];
+                document.getElementById('nacimientoAlumno').value = datos.fila[4];
+                document.getElementById('nacionalidadAlumno').value = datos.fila[5];
+                document.getElementById('domicilioAlumno').value = datos.fila[6];
+                document.getElementById('nombreTutor').value = datos.fila[7];
+                document.getElementById('dniTutor').value = datos.fila[8];
+                document.getElementById('nacionalidadTutor').value = datos.fila[9];
+                document.getElementById('telefonoTutor').value = datos.fila[10];
+                document.getElementById('emailTutor').value = datos.fila[11];
+                document.getElementById('domicilioTutor').value = datos.fila[12];
+                document.getElementById('observaciones').value = datos.fila[13];
+                
+                document.getElementById('chkDni').checked = (datos.fila[14] === 'Sí');
+                document.getElementById('chkPartida').checked = (datos.fila[15] === 'Sí');
+                document.getElementById('chkEstudios').checked = (datos.fila[16] === 'Sí');
+                document.getElementById('chkCus').checked = (datos.fila[17] === 'Sí');
+                document.getElementById('chkIsa').checked = (datos.fila[18] === 'Sí');
+                document.getElementById('chkImagen').checked = (datos.fila[19] === 'Sí');
+                document.getElementById('chkVacunas').checked = (datos.fila[20] === 'Sí');
+                
+            } else {
+                mensaje.innerText = "No se encontró ningún alumno inscripto con ese DNI.";
+                mensaje.style.color = "#dc3545";
+                filaEdicionActual = 0;
+            }
+        })
+        .catch(error => {
+            mensaje.innerText = "Error de conexión. Intente nuevamente.";
+            mensaje.style.color = "#dc3545";
         });
     }
 </script>
